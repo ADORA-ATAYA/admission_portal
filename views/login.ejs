@@ -1,0 +1,38 @@
+<%- include('./header.ejs') %>
+
+<div class="container">
+    <div class="row box-form">
+        <div class="col-md-7" style="background-color: rgb(238, 225, 225);">
+            <img src="/images/loginimage.jpg" class="loginimage">
+        </div>
+        <div class="col-md-5 right">
+            <form action="/userlogin" method="post">
+                <% if(message.length > 0){ %>
+                    <div class="alert alert-success">
+                        <%= message %>
+                    </div>
+                <% } %>
+                <% if(error.length > 0){ %>
+                    <div class="alert alert-danger">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <h5 style="padding-top: 1cm;">Login</h5>
+                <br><br>
+                <div class="inputs">
+                    <input type="email" name="email" placeholder="Email">
+                    <br>
+                    <input type="password" name="password" placeholder="password">
+                </div>	
+                <br>	
+                <p>Don't have an account? <a href="/register">Create Your Account</a> it takes less than a minute</p>	
+                <br>
+                <a href="">forget password?</a>
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

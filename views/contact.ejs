@@ -1,0 +1,49 @@
+<%- include('./header.ejs') %>
+
+<div class="container" style="padding-top:3cm;">
+    <div class="row">
+        <div class="col-md-5 mt-4 mb-3">
+            <h1>Contact Us</h1>
+            <img src="/images/contactimg.webp" style="width: 100%;">
+            <p>Looking for more information or want to try our paid plans.Submit your Information and 
+            blogbuddy representative will follow up with you as soon as possible.Have a simple question
+            <a href="#">Check out our FAQ.</a></p>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6 bg-light mt-4 mb-3" style="border: solid 1px;">
+            <h2 class="text-center mt-3">Talk with our support team</h2>
+            <form action="/contactinsert" method="post">
+                <div class="row">
+                    <div class="mt-5 mb-3 ml-5">
+                        <label>FirstName :</label>
+                        <input type="text" name="fname" placeholder="Henry" class="form-control" required>
+                    </div>
+                    <div class="mt-5 mb-3 ml-5">
+                        <label>LastName :</label>
+                        <input type="text" name="lname" placeholder="Kevin" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 ml-5">
+                        <label>Email id :</label>
+                        <input type="email" name="email" placeholder="@example.com" class="form-control" required>
+                    </div>
+                    <div class="mb-3 ml-5">
+                        <label>Phone Number :</label>
+                        <input type="tel" name="number"  placeholder="91+" class="form-control">
+                    </div>
+                </div>
+                <div class="row mb-3 ml-5 mr-5">
+                    <label>What would you like to discuss :</label>
+                    <textarea class="form-control" name="query" placeholder="Tell us about your query and we will happy to resolve that." style="height:2.5cm"required></textarea>
+                </div>
+                <div class="mt-5 mb-3">
+                    <center><button class=" btn btn-primary">Submit</button></center>
+                </div>
+            </form>
+        </div>
+    </div> <!-- row end-->
+</div><!-- container end-->
+
+
+<%- include('./footer.ejs') %>
