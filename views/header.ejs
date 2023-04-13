@@ -36,6 +36,7 @@ crossorigin="anonymous"></script>
             <!--mobile view end-->
 
             <!--menu start-->
+            
             <div class="navbar-collapse collapse" id=navcollapse>
                 <ul class="navbar-nav ml-auto"> <!-- navbar-nav remove bullet poins-->
                     <!--navlink  used for space between items and remove underline-->
@@ -43,7 +44,12 @@ crossorigin="anonymous"></script>
                     <li><a href="/about" class="nav-link" ><span class="navstyle"><h5>About</h5></span></a></li>
                     <li><a href="/contact" class="nav-link" ><span class="navstyle"><h5>Contact Us</h5></span></a></li>
                     <li><a href="/logout" class="nav-link" ><span class="navstyle"><h5>Logout</h5></span></a></li>
-                    <li><a href="#" class="nav-link" ><span class="navstyle"><img class="userimg" src="/images/course_enroll.jpg"></span></a></li>
+                    <% if (locals.item) { %>
+                        <li><a href="#" class="nav-link" ><span class="navstyle"><img class="userimg" src="<%= item.image.url %>"></span></a></li>
+                    <% } else { %>
+                        <li><a href="#" class="nav-link" ><span class="navstyle"><img class="userimg" src="/images/course_enroll.jpg"></span></a></li>
+                    <% } %>
+                    
                 </ul>
             </div><!--menu end-->
         </div><!--container fluid end-->

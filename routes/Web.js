@@ -19,7 +19,7 @@ router.get('/logout',UserController.logout)
 router.get('/coursebtech',auth,CourseController.btech)
 router.get('/coursebca',auth,CourseController.bca)
 router.get('/coursemca',auth,CourseController.mca)
-router.post('/courseregistration',CourseController.usercourseregistration)
+router.post('/courseregistration',auth,CourseController.usercourseregistration)
 router.get('/datadisplay',auth,CourseController.datadisplay)
 
 

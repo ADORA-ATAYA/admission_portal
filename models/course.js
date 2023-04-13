@@ -36,6 +36,18 @@ const CourseSchema  = new mongoose.Schema({
     branch:{
         type:String,
         required:true
+    },
+    userid:{
+        type:String,
+        required:true
+    },
+    status:{
+        type:String,
+        default:"Pending"
+    },
+    comment:{
+        type:String,
+        default:"Pending"
     }
 },{timestamps:true})
 

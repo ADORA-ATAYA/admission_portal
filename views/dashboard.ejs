@@ -50,7 +50,11 @@
             Bachelor of Technology is an undergraduate four-year course and is offered in 
             various disciplines and specialisations.
           </p>
+          <% if (locals.bt) { %>
+            <a href="/datadisplay" class="btn btn-primary">Display</a>
+        <% } else { %>
           <a href="/coursebtech" class="btn btn-primary">Register</a>
+        <% } %>
         </div>
       </div>
     </div>
@@ -60,8 +64,12 @@
         <div class="card-body">
           <h5 class="card-title">BCA</h5>
           <p class="card-text">Bachelor of Computer Applications.
-             A three-year undergraduate degree in technology and computer applications.</p>
-          <a href="/coursebca" class="btn btn-primary">Register</a>
+          A three-year undergraduate degree in technology and computer applications.</p>
+          <% if (locals.bc) { %>
+              <a href="/display" class="btn btn-primary">Display</a>
+          <% } else { %>
+            <a href="/coursebca" class="btn btn-primary">Register</a>
+          <% } %>
         </div>
       </div>
     </div>
@@ -72,7 +80,11 @@
           <h5 class="card-title">MCA</h5>
           <p class="card-text">Students enrolled in a Master of Computer Applications degree program receive 
             training in a variety of areas of computing.</p>
-          <a href="/coursemca" class="btn btn-primary">Register</a>
+          <% if (locals.mc) { %>
+              <a href="/display" class="btn btn-primary">Display</a>
+          <% } else { %>
+            <a href="/coursemca" class="btn btn-primary">Register</a>
+          <% } %>
         </div>
       </div>
     </div>

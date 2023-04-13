@@ -5,21 +5,25 @@ class CourseController{
 
     static btech= async(req,res)=>{
         try{
-            res.render('form',{d:'B.Tech'})
+            const data = req.admin
+            res.render('form',{d:'B.Tech',item:data})
         }catch(error){
             console.log(error)
         }
     }
+
     static bca= async(req,res)=>{
         try{
-            res.render('form',{d:'BCA'})
+            const data = req.admin
+            res.render('form',{d:'BCA',item:data})
         }catch(error){
             console.log(error)
         }
     }
     static mca= async(req,res)=>{
         try{
-            res.render('form',{d:'MCA'})
+            const data = req.admin
+            res.render('form',{d:'MCA',item:data})
         }catch(error){
             console.log(error)
         }
@@ -27,6 +31,7 @@ class CourseController{
 
     static usercourseregistration = async(req,res)=>{
         try{
+            const {_id} = req.admin
             const result  = new coursemodel({
                 name:req.body.name,
                 email:req.body.email,
@@ -36,7 +41,8 @@ class CourseController{
                 address:req.body.address,
                 college:req.body.college,
                 course:req.body.course,
-                branch:req.body.branch
+                branch:req.body.branch,
+                userid:_id
             })
             await result.save()
             res.redirect('/datadisplay')
@@ -46,13 +52,9 @@ class CourseController{
     }
     static datadisplay= async(req,res)=>{
         try{
-            // const {token} = await req.cookies
-            // const data = await jwt.verify(token,
-            //     'pragyanshutayal12345')
-            // const admin = await  usermodel.findOne({_id:data.id})
-            // const data2 = await coursemodel.findOne({email:admin.email}); 
-            const data2 = await coursemodel.find()
-            res.render('display',{df:data2})
+            const authdata = req.admin
+            const data = await coursemodel.find({userid:authdata._id})
+            res.render('display',{df:data,item:authdata})
         }catch(error){
             console.log(error)
         }

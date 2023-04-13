@@ -1,6 +1,7 @@
 const usermodel = require('../models/User')
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const CourseModel = require('../models/course');
 var cloudinary = require('cloudinary').v2;
 
 cloudinary.config({ 
@@ -88,7 +89,7 @@ class UserController{
                         const token = jwt.sign({id:admin._id},'pragyanshutayal12345')
                         // console.log(token)
                         res.cookie('token',token)
-                        res.render('dashboard',{item:admin})
+                        res.redirect('/dashboard')
                     }
                     else{
                         req.flash('error', 'Wrong Email or Password entered')
@@ -116,24 +117,27 @@ class UserController{
     }
     static dashboard = async(req,res)=>{
         try{
-            const {email}  = req.admin
-            const data = await usermodel.find({email:email})
-            console.log(data)
-            res.render('dashboard',{item:data})
+            const data = req.admin
+            const btech = await CourseModel.findOne({userid:data._id,course:"B.Tech"})
+            const bca = await CourseModel.findOne({userid:data._id,course:"BCA"})
+            const mca = await CourseModel.findOne({userid:data._id,course:"MCA"})
+            res.render('dashboard',{item:data,bt:btech,bc:bca,mc:mca})
         }catch(error){
             console.log(error)
         }
     }
     static contact = async(req,res)=>{
         try{
-            res.render('contact')
+            const data = req.admin
+            res.render('contact',{item:data})
         }catch(error){
             console.log(error)
         }
     }
     static about = async(req,res)=>{
         try{
-            res.render('about')
+            const data = req.admin
+            res.render('about',{item:data})
         }catch(error){
             console.log(error)
         }
