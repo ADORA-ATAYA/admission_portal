@@ -23,14 +23,17 @@ crossorigin="anonymous"></script>
 <title>Admission Portal</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand-md "><!--nav-expand  used for arrange all content in a row in navbar-->
+   <nav class="navbar  navbar-expand-md bg-dark navbar-dark fixed-top"><!--nav-expand  used for arrange all content in a row in navbar-->
         <div class="container-fluid">
              <a href="" class="navbar-brand"> <!--for brand name -->
                <img src="/images/logo.png" class="logo">
             </a>
-            <h1 class="navstyle" style="float:left">Admission Portal</h1>
+            <div class="navbar-brand" style="color: rgb(255, 184, 184);font-family: cursive;">
+                <h2>Admission Portal</h2>
+            </div>
+
             <!--mobile view-->
-            <button class="navbar-toggler navbar-dark bg-dark" data-bs-toggle="collapse" data-bs-target="#navcollapse">
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcollapse">
                 <span class="navbar-toggler-icon" ></span>
             </button>
             <!--mobile view end-->
@@ -40,17 +43,18 @@ crossorigin="anonymous"></script>
             <div class="navbar-collapse collapse" id=navcollapse>
                 <ul class="navbar-nav ml-auto"> <!-- navbar-nav remove bullet poins-->
                     <!--navlink  used for space between items and remove underline-->
-                    <li><a href="/dashboard" class="nav-link" ><span class="navstyle"><h5>Home</h5></span></a></li>
-                    <li><a href="/about" class="nav-link" ><span class="navstyle"><h5>About</h5></span></a></li>
-                    <li><a href="/contact" class="nav-link" ><span class="navstyle"><h5>Contact Us</h5></span></a></li>
-                    <li><a href="/logout" class="nav-link" ><span class="navstyle"><h5>Logout</h5></span></a></li>
+                    <li><a href="/dashboard" class="nav-link" >Home</a></li>
+                    <li><a href="/about" class="nav-link" >About</a></li>
+                    <li><a href="/contact" class="nav-link" >Contact Us</a></li>
+                    <li><a href="/logout" class="nav-link" >Logout</a></li>
                     <% if (locals.item) { %>
-                        <li><a href="#" class="nav-link" ><span class="navstyle"><img class="userimg" src="<%= item.image.url %>"></span></a></li>
+                        <li><a href="#" class="nav-link" ><img class="userimg" src="<%= item.image.url %>"></a></li>
                     <% } else { %>
-                        <li><a href="#" class="nav-link" ><span class="navstyle"><img class="userimg" src="/images/course_enroll.jpg"></span></a></li>
+                        <li><a href="#" class="nav-link" ><img class="userimg" src="/images/course_enroll.jpg"></a></li>
                     <% } %>
                     
                 </ul>
             </div><!--menu end-->
         </div><!--container fluid end-->
     </nav><!--navbar end-->
+    <div style="padding-top: 3cm;"></div>
