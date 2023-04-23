@@ -142,6 +142,51 @@ class UserController{
             console.log(error)
         }
     }
+    static updatepage = async(req,res)=>{
+        try {
+            const data = req.admin
+            res.render('updatepassword',{message:req.flash('success'),error:req.flash('error'),item:data});
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+    static updatepassword = async (req, res) => {
+        try {
+            const { oldpassword, newpassword, confirmpassword } = req.body;
+
+            if (oldpassword && newpassword && confirmpassword) {
+                const user = await usermodel.findById(req.admin.id).select("+password");
+                const isMatch = await bcrypt.compare(oldpassword, user.password);
+                //const isPasswordMatched = await userModel.comparePassword(req.body.oldPassword);
+                if (!isMatch) {
+                    req.flash("error","old password is incorecct")
+                    res.redirect('/updatepasswordpage')
+                } else {
+                    if (newpassword !== confirmpassword) {
+                        req.flash("error","password does not matched")
+                        res.redirect('/updatepasswordpage')
+                    } else {
+                        const salt = await bcrypt.genSalt(10);
+                        const newHashPassword = await bcrypt.hash(newpassword, salt);
+                        //console.log(req.user)
+                        await usermodel.findByIdAndUpdate(req.admin.id, {
+                            $set: { password: newHashPassword },
+                        });
+                        req.flash("success","password change successfully")
+                        res.redirect('/updatepasswordpage')
+                       
+                    }
+                }
+            } else {
+                req.flash("error","All field are required")
+                res.redirect('/updatepasswordpage')
+            }
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
 }
 
 module.exports = UserController

@@ -13,6 +13,8 @@ router.post('/userlogin',UserController.newlogin)
 router.get('/dashboard',auth,UserController.dashboard)
 router.get('/contact',auth,UserController.contact)
 router.get('/about',auth,UserController.about)
+router.get('/updatepasswordpage',auth,UserController.updatepage)
+router.post('/updateuserpassword',auth,UserController.updatepassword)
 router.get('/logout',UserController.logout)
 
 //CourseController
